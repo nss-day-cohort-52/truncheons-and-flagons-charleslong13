@@ -1,7 +1,7 @@
+import os
 import json
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from teams.request import  get_teams
-
 
 class HandleRequests(BaseHTTPRequestHandler):
     def parse_query_string_parameters(self, params):
@@ -72,10 +72,20 @@ class HandleRequests(BaseHTTPRequestHandler):
         self.wfile.write(response.encode())
 
 
+# def main():
+#     host = ''
+#     port = 8080
+#     HTTPServer((host, port), HandleRequests).serve_forever()
+
+
+# if __name__ == "__main__":
+#     main()
+
+# -- Heroku Deployment --
 def main():
-        host = ''
-        port = int(os.environ['PORT'])
-        HTTPServer((host, port), HandleRequests).serve_forever()
+    host = ''
+    port = int(os.environ['PORT'])
+    HTTPServer((host, port), HandleRequests).serve_forever()
 
 
-main()
+    main()
